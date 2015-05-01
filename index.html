@@ -1,6 +1,50 @@
-<title>MDG Apps</title>
-<link rel="stylesheet" type="text/css" href="start.css">
-<ul>
-  <li><a href="https://mdg-apps.github.io/ios/" class="round ios">iOS<span class="round">Zur iOS-Website.</span></a></li>
-  <li><a href="#" class="round android">android<span class="round">Zur Android-Website. </span></a></li>
-</ul> 
+<html>
+<head>
+	<title>MDG Apps</title>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+	// http://stackoverflow.com/questions/12606245/detect-if-browser-is-running-on-an-android-or-ios-device
+	var isMobile = {
+	    Android: function() {
+	        return /Android/i.test(navigator.userAgent);
+	    },
+	    BlackBerry: function() {
+	        return /BlackBerry/i.test(navigator.userAgent);
+	    },
+	    iOS: function() {
+	        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+	    },
+	    Windows: function() {
+	        return /IEMobile/i.test(navigator.userAgent);
+	    },
+	    any: function() {
+	        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+	    }
+	};
+	$(function () {
+		$('body').hide();
+		if (isMobile.iOS()) {
+			window.location = "/ios/";
+		} else if (isMobile.Android()) {
+			window.location = "https://play.google.com/store/apps/details?id=de.t03rk3.mdgnienburgapp"
+		}
+	});
+	$(window).load(function () {
+		$('body').fadeIn();
+	});
+	</script>
+	<link rel="stylesheet" type="text/css" href="start.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+	<div align="center">
+		<div id="selector">
+			<img src="/ios/images/AppIcon.png">
+			<br><br>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="/ios/">iPhone und iPad</a>
+			<a type="button" class="btn btn-success btn-lg btn-block" href="https://play.google.com/store/apps/details?id=de.t03rk3.mdgnienburgapp">Android</a>
+		</div>
+	</div>
+</body>
+</html>
