@@ -24,7 +24,7 @@
 					<p>Auch wenn Schule verwirrend sein kann,<br />
 					unsere Apps sind es nicht.</p>
 					<ul class="actions">
-						<!--li><a href="#" class="button special icon fa-download">Download</a></li-->
+						<li><a class="icon" style="display:none" id="website" href="https://mdgapps.yanniks.de/"><img src="images/website.svg" height="46" style="margin-top:7px" /></a></li>
 						<li><a class="icon" id="gplay" href="https://play.google.com/store/apps/details?id=de.yanniks.mdgnienburg"><img src="images/de-play-badge.png" style="height:52px;margin-top:7px" /></a></li>
 						<li><a class="icon" id="appstore" href="https://itunes.apple.com/de/app/mdg-nienburg/id921382324?mt=8"><img src="images/appstore.svg" height="46" style="margin-top:7px" /></a></li>
 						<li><a href="#one" class="button icon fa-chevron-down scrolly">Mehr erfahren</a></li>
@@ -41,7 +41,7 @@
 				</header>
 				<ul class="icons major">
 					<li><span class="icon fa-apple"><span class="label">iOS</span></span><br>Im App Store<br>&nbsp;</li>
-					<li><span class="icon fa-laptop"><span class="label">Website</span></span><br>Bald verfügbar<br>&nbsp;</li>
+					<li><span class="icon fa-laptop"><span class="label">Website</span></span><br>Benötigt IServ<br>&nbsp;</li>
 					<li><span class="icon fa-android"><span class="label">Android</span></span><br>Bei Google Play<br>und Amazon</li>
 				</ul>
 			</section>
@@ -83,6 +83,7 @@
 					und beginnst eine neue Schulerfahrung.</p>
 				</header>
 				<ul class="actions">
+					<li><a class="icon" style="display:none" id="website" href="https://mdgapps.yanniks.de/"><img src="images/website.svg" height="46" style="margin-top:7px" /></a></li>
 					<li><a class="icon" id="amazon" href="http://www.amazon.de/gp/product/B01B3IFTBM/ref=mas_pm_mdg_nienburg"><img src="images/amazon-underground-app-de-black.svg" height="46" style="margin-top:7px" /></a></li>
 					<li><a class="icon" id="gplay" href="https://play.google.com/store/apps/details?id=de.yanniks.mdgnienburg"><img src="images/de-play-badge.png" style="height:52px;margin-top:7px" /></a></li>
 					<li><a class="icon" id="appstore" href="https://itunes.apple.com/de/app/mdg-nienburg/id921382324?mt=8"><img src="images/appstore.svg" height="46" style="margin-top:7px" /></a></li>
@@ -105,6 +106,31 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script>
+			var isMobile = {
+			    Windows: function() {
+			        return /IEMobile/i.test(navigator.userAgent);
+			    },
+			    Android: function() {
+			        return /Android/i.test(navigator.userAgent);
+			    },
+			    BlackBerry: function() {
+			        return /BlackBerry/i.test(navigator.userAgent);
+			    },
+			    iOS: function() {
+			        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+			    },
+			    any: function() {
+			        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+			    }
+			};
+			$(function() {
+				if (!isMobile.iOS() && !isMobile.Android()) {
+					$($('#website')[0]).show();
+					$($('#website')[1]).show();
+				}
+			})
+			</script>
 
 	</body>
 </html>
